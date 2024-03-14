@@ -1,47 +1,48 @@
 //
-//  ContentView.swift
+//  LandmarkDetail.swift
 //  Landmarks
 //
-//  Created by Chinh on 3/11/24.
+//  Created by Chinh on 3/14/24.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct LandmarkDetail: View {
+    var landmark: Landmark
+    
     var body: some View {
-        VStack {
-            MapView()
+        ScrollView {
+            MapView(coordinate: landmark.locationCoordinate)
                 .frame(height: 300)
             
-            CircleImage()
+            CircleImage(image: landmark.image)
                 .offset(y: -130)
                 .padding(.bottom, -130)
             
             VStack(alignment: .leading) {
-                Text("Turtle Rock")
+                Text(landmark.name)
                     .font(.title)
                 HStack {
-                    Text("Joshua Tree National Park")
+                    Text(landmark.park)
                     Spacer()    // A spacer expands to make its containing view use all of the space of its parent view, instead of having its size defined only by its contents.
-                    Text("California")
+                    Text(landmark.state)
                 }
                 .font(.subheadline)
                 .foregroundStyle(.secondary)    // When you apply a Modifier function to a layout view like a stack, SwiftUI applies the modifier to all the elements contained in the group.
                 
                 Divider()
                 
-                Text("About Turtle Rock")
+                Text("About \(landmark.name)")
                     .font(.title2)
-                Text("Descriptive text goes here.")
+                Text(landmark.description)
             }
             .padding()
-            
-            Spacer()
         }
+        .navigationTitle(landmark.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-//  creates a preview for ContentView.
 #Preview {
-    ContentView()
+    LandmarkDetail(landmark: landmarks[0])
 }
