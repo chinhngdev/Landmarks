@@ -17,12 +17,17 @@ struct LandmarkRow: View {
                 .frame(width: 50, height: 50)
             Text(landmark.name)
             Spacer()
+            if landmark.isFavorite {
+                Image(systemName: "star.fill")
+                    .foregroundStyle(.yellow)
+            }
         }
     }
 }
 
 #Preview("Turtle Rock") {
-    Group {     // Group is a container for grouping view content. Xcode renders the group’s child views stacked as one preview in the canvas.
+    let landmarks = ModelData().landmarks
+    return Group {     // Group is a container for grouping view content. Xcode renders the group’s child views stacked as one preview in the canvas.
         LandmarkRow(landmark: landmarks[0])
         LandmarkRow(landmark: landmarks[1])
     }

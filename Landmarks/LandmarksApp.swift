@@ -12,9 +12,12 @@ import SwiftUI
 // Thuộc tính @main là điểm bắt đầu của ứng dụng.
 @main
 struct LandmarksApp: App {
+    @State private var modelData = ModelData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(modelData)
         }
     }
 }

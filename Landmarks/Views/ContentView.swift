@@ -16,4 +16,5 @@ struct ContentView: View {
 //  creates a preview for ContentView.
 #Preview {
     ContentView()
+        .environment(ModelData())
 }
