@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LandmarkList: View {
-    @Environment(ModelData.self) var modelData
+    @Environment(ModelData.self) var modelData  // The @Environment property wrapper enables you to read the model data of the current view.
     @State private var showFavoritesOnly = false
     
     var filteredLandmarks: [Landmark] {
@@ -43,5 +43,5 @@ struct LandmarkList: View {
 
 #Preview {
     LandmarkList()
-        .environment(ModelData())
+        .environment(ModelData())   // The modelData property gets its value automatically, as long as the environment(_:) modifier has been applied to a parent.
 }
